@@ -16,9 +16,7 @@ const Nav = ({ hogs }) => {
 				A React App for County Fair Hog Fans
 			</span>
 			<div>
-				{copyHogs.map(hog => {
-					<Hog hogData={hog} key={hog.indexOf(hog)} />
-				}) }
+				{copyHogs.map(hog => <Hog hogData={hog} key={copyHogs.indexOf(hog)} /> ) }
 			</div>
 		</div>
 	);
