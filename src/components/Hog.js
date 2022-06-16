@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Card, Image } from "semantic-ui-react";
 
 function Hog({ hogData }) {
   const [toggle, setToggle] = useState(false);
@@ -8,35 +9,36 @@ function Hog({ hogData }) {
   };
 
   return (
-    <div  onClick={() => handleClick()}>
+    <div onClick={() => handleClick()}>
       {toggle ? (
-        <div class="ui card">
-          <div class="image">
-            <img src={hogData.image} alt={`${hogData.name} the Hog`}  />
-          </div>
-          <div class="content">
-            <h2 class="header">{hogData.name}</h2>
-            <div class="meta">
-              <span class="date">{hogData.weight}kg</span>
-            </div>
-            <div class="description">{hogData.specialty}</div>
-          </div>
-          <div class="extra content">
+        <Card>
+          <Image
+            src={hogData.image}
+            alt={`${hogData.name} the Hog`}
+            wrapped
+            ui={false}
+          />
+          <Card.Content>
+            <Card.Header>{hogData.name}</Card.Header>
+            <Card.Meta>
+              <span className="weight">{hogData.weight}kg</span>
+            </Card.Meta>
+            <Card.Description>{hogData.specialty}</Card.Description>
+          </Card.Content>
+          <Card.Content extra>
             <h4>{hogData.greased}</h4>
-          </div>
-        </div>
+          </Card.Content>
+        </Card>
       ) : (
-        <div class="ui card">
-          <div class="image">
-            <img src={hogData.image} alt={`${hogData.name} the Hog`} />
-          </div>
-          <div class="content">
-            <h2 class="header">{hogData.name}</h2>
-          </div>
-        </div>
+        <Card>
+          <Image src={hogData.image} alt={`${hogData.name} the Hog`} />
+          <Card.Content>
+            <Card.Header>{hogData.name}</Card.Header>
+          </Card.Content>
+        </Card>
       )}
     </div>
-  );  
+  );
 }
 
 export default Hog;
